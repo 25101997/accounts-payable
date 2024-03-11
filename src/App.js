@@ -5,8 +5,7 @@ import SideBarMenu from './components/SideBarMenu';
 function App() {
   return (
     <div className="App">
-      <Header sms="Header"/>
-      <SideBarMenu/>
+      <Header/>
     </div>
   );
 }

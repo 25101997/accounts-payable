@@ -53,3 +53,25 @@
     background-color: #fff;
     position: absolute;
   }
+
+  .header{
+    position:sticky;
+    background-color: #CBEE8E;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .header-title{
+    color: #547A10; 
+    font-weight: bold; 
+    font-family: 'Century Gothic', sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+
+  .header-item{
+    display: flex;
+    align-items: center;
+  }

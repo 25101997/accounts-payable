@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, IconButton, Menu, MenuItem } from '@mui/ma
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import '../styles/Header.css'
+import SideBarMenu from '../components/SideBarMenu'
 
 let onButton = false;
 
@@ -10,10 +11,20 @@ const Header = (props) => {
     const [isMenuVisible, setIsMenuVisible] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [suggestions, setSuggestions] = useState([]);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
 
     const toggleMenu = () => {
         setIsMenuVisible(!isMenuVisible);
         onButton = true;
+    };
+
+    const handleMenuOpen = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    
+    const handleMenuClose = () => {
+        setAnchorEl(null);
     };
 
     const handleSearchChange = (event) => {
@@ -47,21 +58,21 @@ const Header = (props) => {
     
     return(
         <>
-            <AppBar sx={{ backgroundColor: '#CBEE8E' }}>
-                <Toolbar>
+
+            <header className="header">
+                <div className="header-item">
                     <IconButton
                         size="large"
-                        edge="start"
                         color= '#547A10'
                         aria-label="menu"
-                        sx={{ mr: 2 }}
                         onClick={toggleMenu}
                     >
                         <MenuIcon/>
                     </IconButton>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#547A10', fontWeight: 'bold', fontFamily: 'Century Gothic, sans-serif' }}>
-                        Accounts Payable
-                    </Typography>
+                    <h2 className="header-title">Accounts Payable</h2>
+                </div>
+
+                <div className="header-item">
                     <div className='searchDiv'>
                         <SearchIcon />
                         <div>
@@ -79,9 +90,42 @@ const Header = (props) => {
                         </ul>
                         </div>
                     </div>
+                </div>
 
-                </Toolbar>
-            </AppBar>
+                <div className="header-item">
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenuOpen}
+                        color="primary"
+                    >
+                        <img src="https://es.seaicons.com/wp-content/uploads/2015/08/green-user-icon.png" alt="User Icon" style={{ width: '32px', height: '32px', borderRadius: '50%' }} />
+                    </IconButton>
+
+                    <h3 className="header-title">Francisco Lopez</h3>
+                
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                        }}
+                        open={open}
+                        onClose={handleMenuClose}
+                    >
+                        <MenuItem onClick={handleMenuClose}>Log Out</MenuItem>
+                    </Menu>
+                </div>
+            </header>
+
+            <SideBarMenu isVisible={isMenuVisible} />
         </>
     );
 };
