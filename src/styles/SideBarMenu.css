@@ -1,0 +1,45 @@
+  /* Estilo para el cuadro de entrada (input) */
+  
+  .sidebar{
+    width: 20rem;
+    background-color:#f2ffdb;
+    height: 100%;
+    /*position: absolute; height: 44.8rem; z-index: 500;*/ 
+    border: 2px solid #a8d756;
+    box-shadow: 6px 0 6px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Estilos para SideBarMenu */
+  .sidebar-menu {
+    width: 0; /* Inicialmente oculto */
+    height: 100%;
+    position: absolute;
+    z-index: 500;
+    left: -20.5rem; /* Lo desplazamos fuera del área visible */
+    transition: left 0.3s; /* Agregamos una transición suave */
+  }
+  
+  .sidebar-menu.visible {
+    left: 0; /* Cuando es visible, lo desplazamos a la posición 0 */
+  }
+  
+  .sidebar-container{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .sidebar-item{
+    padding: 0.8rem 1.0rem;
+  }
+  
+  .sidebar-item:hover{
+    background-color: rgba(202, 201, 201, 0.25);
+  }
+  
+  .sidebar-text{
+    text-decoration: none;
+    color: #547A10; 
+    font-family: 'Century Gothic';
+    font-weight: bold;
+  }
